@@ -24,6 +24,7 @@
             <a
               href="#"
               class="loginout"
+              @click="handleSignout()"
             >退出</a>
           </div>
         </el-col>
@@ -144,7 +145,10 @@
         </el-menu>
       </el-aside>
       <!-- 右侧核心内容区 -->
-      <el-main class="main">Main</el-main>
+      <el-main class="main">
+        <!-- 用户列表的视图容器 -->
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -161,6 +165,16 @@ export default {
       //编程式导航
       this.$router.push({name:'login'})
       this.$message.warning('无事别登三宝殿')
+    }
+  },
+  methods:{
+    handleSignout(){
+      //提示
+      this.$message.success('退出成功')
+      //删除token
+      localStorage.clear()
+      //跳转到登录页
+      this.$router.push({name:'login'})
     }
   }
 };
