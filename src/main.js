@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import moment from 'moment'
 //引入公共样式
 import '@/assets/css/base.css'
 //引入axios
@@ -15,6 +16,10 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+//自定义全局过滤器:处理日期格式化
+Vue.filter('fmtdate', (v) => {
+    return moment(v).format('YYYY-MM-DD')
+})
 new Vue({
     el: '#app',
     router,
