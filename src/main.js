@@ -10,13 +10,17 @@ import moment from 'moment'
 import '@/assets/css/base.css'
 //引入axios
 import http from '@/plugins/http.js'
+//引入自定义面包屑组件
+import MyBread from '@/components/cuscom/myBread.vue'
 Vue.use(http)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-//自定义全局过滤器:处理日期格式化
+//全局自定义组件--面包屑
+Vue.component(MyBread.name, MyBread)
+    //自定义全局过滤器:处理日期格式化
 Vue.filter('fmtdate', (v) => {
     return moment(v).format('YYYY-MM-DD')
 })
